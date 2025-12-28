@@ -58,12 +58,12 @@ export const HeroSection = () => {
                             </p>
 
                             <div className="flex flex-wrap gap-4 mt-2">
-                                <Button className="h-12 md:h-14 px-6 md:px-8 bg-orange-600 hover:bg-orange-700 rounded-none text-white text-sm font-medium uppercase">
+                                <Button className="h-12  px-6  bg-orange-600 hover:bg-orange-700 rounded-none text-white text-sm font-medium uppercase">
                                     Contact Us
                                 </Button>
                                 <Button
                                     variant="outline"
-                                    className="h-12 md:h-14 px-6 md:px-8 border-white bg-transparent text-white hover:bg-white/10 rounded-none text-sm font-medium  uppercase"
+                                    className="h-12  px-6 md:px-8 border-white bg-transparent text-white hover:bg-white/10 rounded-none text-sm font-medium  uppercase"
                                 >
                                     Learn More
                                 </Button>
