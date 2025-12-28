@@ -57,6 +57,15 @@ A robust, modular e-commerce frontend built with **Next.js 16.0.7**, **React 19.
   - Unauthorized or expired sessions are handled gracefully with redirects and error toasts.
   - All authentication and authorization errors are handled gracefully with custom error pages and toast notifications.
 
+## Protected Pages
+
+The following pages are protected and require authentication (and appropriate role, if admin):
+
+- `/admin/manage-products` – Only accessible by admin users for product management (CRUD).
+- `/admin/manage-banner` – Only accessible by admin users for banner management.
+- Any future `/admin/*` or user-specific dashboard pages will also be protected.
+- `/cart` – Accessible by authenticated users to view and manage their cart.
+
 ### Cart System (Client)
 
 - **Add/Remove Products**:
@@ -119,7 +128,7 @@ A robust, modular e-commerce frontend built with **Next.js 16.0.7**, **React 19.
 - `/` (Home): Hero, Marquee, Facilities, Featured Products.
 - `/login`: Login form, demo login, Google OAuth.
 - `/register`: Register form, profile photo, Google OAuth.
-- `/cart`: Cart items, remove/buy, empty state.
+- `/cart`: Cart items, remove/buy, empty state (protected page).
 - `/admin/manage-products`: Product CRUD, pagination, dialogs.
 - `/admin/manage-banner`: Banner preview and update.
 - `/not-found`, `/error`: Custom error handling.
@@ -193,3 +202,12 @@ src/app/           # Next.js app directory (layouts, pages, styles)
 - `npm run lint` – Lint the codebase
 
 ---
+
+
+## SOME VISUAL INSTRUCTIONS IF YOU FEEL LOST
+
+![alt text](image.png)
+
+![alt text](2-1.png)
+
+![alt text](3.png)
