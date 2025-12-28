@@ -4,6 +4,8 @@ A robust, modular e-commerce frontend built with **Next.js 16.0.7**, **React 19.
 
 ---
 
+
+
 ### Live Link : [Gonnivior E-Commerce Frontend](https://gonnivior-frontend.vercel.app/)
 ### Backend Repo : [Gonnivior E-Commerce Backend](https://github.com/Sazid60/Goinnovior-Backend.git)
 
@@ -12,6 +14,14 @@ A robust, modular e-commerce frontend built with **Next.js 16.0.7**, **React 19.
 
 - ADMIN_EMAIL= admin@gmail.com
 - ADMIN_PASSWORD= Admin@12345
+
+**Special Notes :**
+1. Hit the `Your Profile` button on the navbar to access login page and can navigate from login page to register page. After successful login hover over your image in the navbar and see user dropdown with logout option.
+2. Once You log in you will not be able to access the auth routes (login, register) unless you log out.
+3. Add to cart functionality is dealt with local storage. So, the cart items will persist even after page refresh.
+4. The dynamic contents are `Banner Content` , `products` which can be managed from the admin panel.
+
+*visual representations are given at the end of the README*
 
 ## Features Overview
 
@@ -56,6 +66,15 @@ A robust, modular e-commerce frontend built with **Next.js 16.0.7**, **React 19.
   - Auth Guard checks JWT validity and user role before rendering protected content.
   - Unauthorized or expired sessions are handled gracefully with redirects and error toasts.
   - All authentication and authorization errors are handled gracefully with custom error pages and toast notifications.
+
+## Protected Pages
+
+The following pages are protected and require authentication (and appropriate role, if admin):
+
+- `/admin/manage-products` – Only accessible by admin users for product management (CRUD).
+- `/admin/manage-banner` – Only accessible by admin users for banner management.
+- Any future `/admin/*` or user-specific dashboard pages will also be protected.
+- `/cart` – Accessible by authenticated users to view and manage their cart.
 
 ### Cart System (Client)
 
@@ -119,7 +138,7 @@ A robust, modular e-commerce frontend built with **Next.js 16.0.7**, **React 19.
 - `/` (Home): Hero, Marquee, Facilities, Featured Products.
 - `/login`: Login form, demo login, Google OAuth.
 - `/register`: Register form, profile photo, Google OAuth.
-- `/cart`: Cart items, remove/buy, empty state.
+- `/cart`: Cart items, remove/buy, empty state (protected page).
 - `/admin/manage-products`: Product CRUD, pagination, dialogs.
 - `/admin/manage-banner`: Banner preview and update.
 - `/not-found`, `/error`: Custom error handling.
@@ -193,3 +212,12 @@ src/app/           # Next.js app directory (layouts, pages, styles)
 - `npm run lint` – Lint the codebase
 
 ---
+
+
+## SOME VISUAL INSTRUCTIONS IF YOU FEEL LOST
+
+![alt text](image.png)
+
+![alt text](2-1.png)
+
+![alt text](3.png)
