@@ -97,7 +97,7 @@ const RegisterForm = () => {
       <div>
         <div className="relative group">
           <ImageIcon className={iconClass} />
-          <Input name="profilePhoto" type="file" className="w-full h-11 md:h-12 pl-12 pt-2 md:pt-2.5 bg-white border-none rounded-xl text-neutral-400 text-xs md:text-sm file:hidden cursor-pointer" />
+          <Input name="profilePhoto" type="file" className="w-full h-11 md:h-12 pl-12 pt-2 md:pt-3 bg-white border-none rounded-xl text-neutral-400 text-xs md:text-sm file:hidden cursor-pointer" />
         </div>
         <div className="mt-1">
           <InputFieldError field="profilePhoto" state={state} />

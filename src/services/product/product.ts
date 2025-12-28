@@ -7,7 +7,7 @@
 import { serverFetch } from "@/lib/server-fetch";
 import { zodValidator } from "@/lib/zodValidator";
 import { ProductType } from "@/types/product.interface";
-import { productValidationZodSchema } from "@/zod/product.validation";
+import { productUpdateValidationZodSchema, productValidationZodSchema } from "@/zod/product.validation";
 import { revalidateTag } from "next/cache";
 
 
@@ -38,7 +38,7 @@ export const createProduct = async (_currentState: any, formData: FormData): Pro
         minPrice: formData.get('minPrice'),
         maxPrice: formData.get('maxPrice'),
         quantity: formData.get('quantity'),
-        image: formData.get('imageFile'), 
+        image: formData.get('imageFile'),
     };
 
     const validatedPayload = zodValidator(validationPayload, productValidationZodSchema);
@@ -52,7 +52,7 @@ export const createProduct = async (_currentState: any, formData: FormData): Pro
         };
     }
 
-        if (!validatedPayload.data) {
+    if (!validatedPayload.data) {
         return {
             success: false,
             message: "Validation failed",
@@ -73,7 +73,7 @@ export const createProduct = async (_currentState: any, formData: FormData): Pro
 
     const imageFile = formData.get("imageFile");
     if (imageFile instanceof File) {
-        newFormData.append("image", imageFile); 
+        newFormData.append("image", imageFile);
     }
 
     try {
@@ -88,6 +88,66 @@ export const createProduct = async (_currentState: any, formData: FormData): Pro
         return result;
     } catch (error: any) {
         console.error("Create Product Error:", error);
+        if (error?.digest?.startsWith('NEXT_REDIRECT')) throw error;
+        return { success: false, message: error.message || "Server Error" };
+    }
+};
+
+
+export const updateProduct = async (_currentState: any, formData: FormData): Promise<any> => {
+    const validationPayload = {
+        id: formData.get("id"),
+        name: formData.get("name"),
+        description: formData.get("description"),
+        minPrice: formData.get("minPrice"),
+        maxPrice: formData.get("maxPrice"),
+        quantity: formData.get("quantity"),
+        image: formData.get("imageFile"),
+    };
+
+    const validatedPayload = zodValidator(validationPayload, productUpdateValidationZodSchema);
+
+    if (!validatedPayload.success) {
+        return {
+            success: false,
+            message: "Validation failed",
+            formData: validationPayload,
+            errors: validatedPayload.errors,
+        };
+    }
+    if (!validatedPayload.data) {
+        return {
+            success: false,
+            message: "Validation failed",
+            formData: validationPayload,
+        };
+    }
+
+    const newFormData = new FormData();
+    const productData = {
+        id: validatedPayload.data.id,
+        name: validatedPayload.data.name,
+        description: validatedPayload.data.description,
+        minPrice: validatedPayload.data.minPrice,
+        maxPrice: validatedPayload.data.maxPrice,
+        quantity: validatedPayload.data.quantity,
+    };
+    newFormData.append("data", JSON.stringify(productData));
+    const imageFile = formData.get("imageFile");
+    if (imageFile instanceof File && imageFile.size > 0) {
+        newFormData.append("image", imageFile);
+    }
+    try {
+        const res = await serverFetch.patch(`/cms/product/${productData.id}`, {
+            body: newFormData,
+        });
+        const result = await res.json();
+        if (result.success) {
+            revalidateTag("product-list", { expire: 0 });
+        }
+        return result;
+    } catch (error: any) {
+        console.error("Update Product Error:", error);
         if (error?.digest?.startsWith('NEXT_REDIRECT')) throw error;
         return { success: false, message: error.message || "Server Error" };
     }
