@@ -53,7 +53,7 @@ const PublicFooter = () => {
 
   return (
     <footer className="w-full bg-neutral-100 pt-8 pb-4">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 md:px-8 xl:px-4">
         <div className="flex flex-col md:flex-row md:justify-between gap-8">
           <div className="flex-1 min-w-[250px]">
             <div className="flex items-center gap-4 mb-10">
@@ -165,18 +165,20 @@ const PublicFooter = () => {
             {paymentChannels.map((item, idx) => (
               <div key={idx} className="flex items-center justify-center ">
                 <Image
+                
                   src={item.src}
                   alt={item.alt}
                   width={80}
                   height={40}
                   className="rounded bg-white object-contain h-12 w-24"
+                  style={{ height: '48px', width: '80px' }}
                 />
               </div>
             ))}
           </div>
         </div>
         <div className="mt-8 border-t border-black/20 pt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div className="text-neutral-700 text-base font-semibold font-['Roboto']">
+          <div className="text-neutral-700 text-sm text-center lg:text-left font-semibold ">
             Copyright ©{" "}
             <span className="text-amber-400">360D Soul Limited</span> 2025. All
             rights reserved.
@@ -186,7 +188,7 @@ const PublicFooter = () => {
             <Twitter size={16} />
             <Instagram size={16}  />
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-col lg:flex-row items-center gap-6">
             <Link
               href="#"
               className="text-neutral-700 text-base font-medium font-['Roboto'] hover:text-orange-600 transition"
