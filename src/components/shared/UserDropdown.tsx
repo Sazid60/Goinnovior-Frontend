@@ -36,7 +36,10 @@ const UserDropdown = ({ user }: UserDropdownProps) => {
     >
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger asChild>
-          <div className="flex items-center gap-2 cursor-pointer group py-2">
+          <div
+            className="flex items-center gap-2 cursor-pointer group py-2"
+            suppressHydrationWarning
+          >
             <div className="relative w-10 h-10 border-2 border-[#19bfc3] rounded-full overflow-hidden transition-transform group-hover:scale-105">
               <div className=" w-10 h-10 overflow-hidden rounded-full">
                 <Image
@@ -66,7 +69,9 @@ const UserDropdown = ({ user }: UserDropdownProps) => {
         >
           <DropdownMenuLabel className="font-normal p-4">
             <div className="flex flex-col space-y-1">
-              <p className="text-sm font-semibold text-neutral-800">{user.name}</p>
+              <p className="text-sm font-semibold text-neutral-800">
+                {user.name}
+              </p>
               <p className="text-xs text-neutral-500 truncate">{user.email}</p>
             </div>
           </DropdownMenuLabel>
@@ -75,22 +80,37 @@ const UserDropdown = ({ user }: UserDropdownProps) => {
 
           {isAdmin ? (
             <div className="py-2 space-y-1">
-              <DropdownMenuItem asChild className="rounded-lg cursor-pointer focus:bg-[#07B4B0] focus:text-white group/item">
-                <Link href="/admin/manage-products" className="flex items-center w-full">
+              <DropdownMenuItem
+                asChild
+                className="rounded-lg cursor-pointer focus:bg-[#07B4B0] focus:text-white group/item"
+              >
+                <Link
+                  href="/admin/manage-products"
+                  className="flex items-center w-full"
+                >
                   <LayoutDashboard className="mr-2 h-4 w-4 text-teal-600 group-focus/item:text-white" />
                   <span className="text-sm font-medium">Manage Products</span>
                 </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild className="rounded-lg cursor-pointer focus:bg-[#07B4B0] focus:text-white group/item">
-                <Link href="/admin/manage-cms" className="flex items-center w-full">
+              <DropdownMenuItem
+                asChild
+                className="rounded-lg cursor-pointer focus:bg-[#07B4B0] focus:text-white group/item"
+              >
+                <Link
+                  href="/admin/manage-banner"
+                  className="flex items-center w-full"
+                >
                   <Settings className="mr-2 h-4 w-4 text-teal-600 group-focus/item:text-white" />
-                  <span className="text-sm font-medium">Manage CMS</span>
+                  <span className="text-sm font-medium">Manage Banner</span>
                 </Link>
               </DropdownMenuItem>
             </div>
           ) : (
             <div className="py-2">
-              <DropdownMenuItem asChild className="rounded-lg cursor-pointer focus:bg-[#07B4B0] focus:text-white group/item">
+              <DropdownMenuItem
+                asChild
+                className="rounded-lg cursor-pointer focus:bg-[#07B4B0] focus:text-white group/item"
+              >
                 <Link href="/cart" className="flex items-center w-full">
                   <ShoppingCart className="mr-2 h-4 w-4 text-orange-600 group-focus/item:text-white" />
                   <span className="text-sm font-medium">Your Cart</span>
