@@ -29,8 +29,8 @@ const UserDropdown = ({ user }: UserDropdownProps) => {
   const isAdmin = user.role === "ADMIN";
 
   return (
-    <div 
-      onMouseEnter={() => setOpen(true)} 
+    <div
+      onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       className="relative"
     >
@@ -38,12 +38,16 @@ const UserDropdown = ({ user }: UserDropdownProps) => {
         <DropdownMenuTrigger asChild>
           <div className="flex items-center gap-2 cursor-pointer group py-2">
             <div className="relative w-10 h-10 border-2 border-[#19bfc3] rounded-full overflow-hidden transition-transform group-hover:scale-105">
-              <Image
-                src={user.profilePhoto || "https://github.com/shadcn.png"}
-                alt={user.name}
-                fill
-                className="object-cover"
-              />
+              <div className=" w-10 h-10 overflow-hidden rounded-full">
+                <Image
+                  src={user.profilePhoto || "https://github.com/shadcn.png"}
+                  alt={user.name || "User"}
+                  fill
+                  className="object-cover"
+                  sizes="40px"
+                  priority={false}
+                />
+              </div>
             </div>
             <div className="hidden lg:flex flex-col items-start leading-none">
               <span className="text-xs font-bold text-neutral-700">

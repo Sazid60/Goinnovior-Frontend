@@ -14,7 +14,7 @@ import {
   X,
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // To handle dynamic active state
+import { usePathname } from "next/navigation"; 
 import { useState } from "react";
 import Logo from "../../../public/assets/icon/Logo";
 import { UserInfo } from "@/types/user.interface";

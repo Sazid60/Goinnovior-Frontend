@@ -165,6 +165,7 @@ const PublicFooter = () => {
             {paymentChannels.map((item, idx) => (
               <div key={idx} className="flex items-center justify-center ">
                 <Image
+                
                   src={item.src}
                   alt={item.alt}
                   width={80}

@@ -24,11 +24,12 @@ const ProductCard = ({ product }: ProductProps) => {
 
             <div className="relative h-64 group-hover:h-80 w-full bg-gray-100 rounded-lg overflow-hidden transition-[height] duration-500 ease-in-out">
                 <Image
-                    fill 
+                    fill
                     src={product.image}
                     alt={product.name}
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 320px) 100vw, 320px"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    priority={false}
                 />
 
                 <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">

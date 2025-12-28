@@ -6,26 +6,23 @@
 
 import { serverFetch } from "@/lib/server-fetch";
 import { zodValidator } from "@/lib/zodValidator";
-import { ProductType } from "@/types/product.interface";
+
 import { productUpdateValidationZodSchema, productValidationZodSchema } from "@/zod/product.validation";
 import { revalidateTag } from "next/cache";
 
 
 
-export const getAllProducts = async (): Promise<ProductType[]> => {
+export const getAllProducts = async (queryString?: string): Promise<any> => {
     try {
-        const response = await serverFetch.get("/cms/product", {
+        const response = await serverFetch.get(`/cms/product${queryString ? `?${queryString}` : ""}`, {
             cache: "no-store",
             next: { tags: ["product-list"] }
         });
         const result = await response.json();
-        if (result.success && result.data) {
-            return result.data as ProductType[];
-        }
-        return [];
+        return result; 
     } catch (error: any) {
         console.log(error);
-        return [];
+        return { success: false, data: [], meta: {} };
     }
 }
 
@@ -149,6 +146,20 @@ export const updateProduct = async (_currentState: any, formData: FormData): Pro
     } catch (error: any) {
         console.error("Update Product Error:", error);
         if (error?.digest?.startsWith('NEXT_REDIRECT')) throw error;
+        return { success: false, message: error.message || "Server Error" };
+    }
+};
+
+
+export const deleteProduct = async (id: string): Promise<any> => {
+    try {
+        const res = await serverFetch.delete(`/cms/product/${id}`);
+        const result = await res.json();
+        if (result.success) {
+            revalidateTag("product-list", { expire: 0 });
+        }
+        return result;
+    } catch (error: any) {
         return { success: false, message: error.message || "Server Error" };
     }
 };

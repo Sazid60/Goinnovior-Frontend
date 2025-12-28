@@ -4,8 +4,9 @@ import { Eye, Share2, Pencil, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useState } from "react";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import UpdateProductForm from "@/components/update-product-form";
+import { ProductUpdateDialog } from "./ProductUpdateDialog";
+import { ProductDeleteDialog } from "./DeleteProductDialog";
+
 
 interface AdminCardProps {
     product: {
@@ -21,19 +22,24 @@ interface AdminCardProps {
     onDelete?: (id: string) => void;
 }
 
+const AdminCard = ({ product, onDelete }: AdminCardProps) => {
+    const [updateOpen, setUpdateOpen] = useState(false);
+    const [deleteOpen, setDeleteOpen] = useState(false);
 
-const AdminCard = ({ product, onUpdate, onDelete }: AdminCardProps) => {
-    const [open, setOpen] = useState(false);
     return (
         <>
             <div className="group relative p-3 bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 w-full h-fit">
+
                 <div className="relative h-64 group-hover:h-80 w-full bg-gray-100 rounded-lg overflow-hidden transition-[height] duration-500 ease-in-out">
                     <Image
                         fill
                         src={product.image}
                         alt={product.name}
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 320px) 100vw, 320px"
+
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+  
+                        priority={false}
                     />
                     <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-bold text-teal-600 shadow-sm z-10">
                         Stock: {product.quantity}
@@ -47,6 +53,7 @@ const AdminCard = ({ product, onUpdate, onDelete }: AdminCardProps) => {
                         </button>
                     </div>
                 </div>
+
 
                 <div className="mt-4 flex flex-col gap-3">
                     <div>
@@ -63,9 +70,11 @@ const AdminCard = ({ product, onUpdate, onDelete }: AdminCardProps) => {
                             </span>
                         </div>
                     </div>
+
+
                     <div className="flex items-center gap-3 w-full">
                         <Button
-                            onClick={() => setOpen(true)}
+                            onClick={() => setUpdateOpen(true)}
                             variant="secondary"
                             className="flex-1 bg-teal-500/10 hover:bg-teal-500/20 text-teal-600 border-none rounded h-10 gap-2 text-xs font-bold"
                         >
@@ -73,7 +82,7 @@ const AdminCard = ({ product, onUpdate, onDelete }: AdminCardProps) => {
                             Update
                         </Button>
                         <Button
-                            onClick={() => onDelete?.(product.id)}
+                            onClick={() => setDeleteOpen(true)}
                             className="flex-1 bg-red-50 hover:bg-red-100 text-red-600 shadow-none border-none rounded h-10 gap-2 text-xs font-bold transition-colors"
                         >
                             <Trash2 className="w-4 h-4" />
@@ -82,12 +91,20 @@ const AdminCard = ({ product, onUpdate, onDelete }: AdminCardProps) => {
                     </div>
                 </div>
             </div>
-            <Dialog open={open} onOpenChange={setOpen}>
-                <DialogContent className="sm:max-w-[550px] bg-neutral-50 border-none rounded-xl p-6">
-                    <DialogTitle className="text-xl font-bold mb-2">Update Product</DialogTitle>
-                    <UpdateProductForm product={product} onSuccess={() => setOpen(false)} />
-                </DialogContent>
-            </Dialog>
+
+
+            <ProductUpdateDialog
+                product={product}
+                open={updateOpen}
+                setOpen={setUpdateOpen}
+            />
+
+            <ProductDeleteDialog
+                productId={product.id}
+                open={deleteOpen}
+                setOpen={setDeleteOpen}
+                onSuccess={onDelete}
+            />
         </>
     );
 };
