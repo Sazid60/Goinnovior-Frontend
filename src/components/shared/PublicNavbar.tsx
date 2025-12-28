@@ -94,7 +94,6 @@ const PublicNavbar = ({ accessToken, role, user }: NavbarProps) => {
             <Logo />
             <ul className="hidden lg:flex items-center gap-6">
               {navLinks.map((link) => {
-                // Check if current path matches link href
                 const isActive = pathname === link.href;
                 
                 return (
@@ -140,16 +139,14 @@ const PublicNavbar = ({ accessToken, role, user }: NavbarProps) => {
             <button className="hidden md:flex px-5 py-2.5 bg-orange-600 hover:bg-orange-700 text-white text-sm font-bold rounded transition-colors shadow-sm">
               Contact Us
             </button>
-
-            {/* Mobile Toggle */}
             <button className="lg:hidden p-2 hover:bg-neutral-100 rounded-lg transition-colors" onClick={() => setSidebarOpen(true)}>
               <Menu size={28} />
             </button>
           </div>
         </div>
 
-        {/* Mobile Sidebar */}
-        <div className={`fixed top-0 right-0 h-full w-80 bg-white z-[100] shadow-2xl transform transition-transform duration-500 ease-in-out ${sidebarOpen ? "translate-x-0" : "translate-x-full"}`}>
+
+        <div className={`fixed top-0 right-0 h-full w-80 bg-white z-100 shadow-2xl transform transition-transform duration-500 ease-in-out ${sidebarOpen ? "translate-x-0" : "translate-x-full"}`}>
           <div className="flex justify-between items-center p-5 border-b">
             <Logo />
             <button onClick={() => setSidebarOpen(false)} className="p-2 hover:bg-neutral-100 rounded-full transition-colors">
@@ -178,10 +175,9 @@ const PublicNavbar = ({ accessToken, role, user }: NavbarProps) => {
           </ul>
         </div>
 
-        {/* Backdrop for mobile */}
         {sidebarOpen && (
           <div 
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90] transition-opacity duration-300"
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-90 transition-opacity duration-300"
             onClick={() => setSidebarOpen(false)}
           />
         )}

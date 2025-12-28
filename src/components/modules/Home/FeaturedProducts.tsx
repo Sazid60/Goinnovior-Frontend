@@ -2,46 +2,11 @@
 
 import ProductCard from "./ProductCard";
 
-const fakeProducts = [
-  {
-    id: "1",
-    name: "Woman Apparel",
-    description: "Premium cotton blend",
-    minPrice: 1000,
-    maxPrice: 100000,
-    quantity: 10,
-    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop",
-  },
-  {
-    id: "2",
-    name: "Man Apparel",
-    description: "Stylish winter wear",
-    minPrice: 1000,
-    maxPrice: 100000,
-    quantity: 5,
-    image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=1000&auto=format&fit=crop",
-  },
-  {
-    id: "3",
-    name: "Sports Wear",
-    description: "Breathable athletic gear",
-    minPrice: 1500,
-    maxPrice: 10000,
-    quantity: 20,
-    image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000&auto=format&fit=crop",
-  },
-  {
-    id: "4",
-    name: "Nightwear",
-    description: "Soft silk pajamas",
-    minPrice: 1000,
-    maxPrice: 10000,
-    quantity: 15,
-    image: "https://images.unsplash.com/photo-1582142306909-195724d33ffc?q=80&w=1000&auto=format&fit=crop",
-  },
-];
 
-const FeaturedProducts = () => {
+import { ProductType } from "@/types/product.interface";
+
+
+const FeaturedProducts = ({ products }: { products: ProductType[] }) => {
   return (
     <section className="py-4 md:py-16 bg-white mb-20">
       <div className="container mx-auto px-4 md:px-12 lg:px-[120px]">
@@ -57,9 +22,13 @@ const FeaturedProducts = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-4 gap-8">
-          {fakeProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {products.length > 0 ? (
+            products.slice(0, 4).map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))
+          ) : (
+            <div className="col-span-4 text-center text-gray-500 py-10">No product data found</div>
+          )}
         </div>
       </div>
     </section>
