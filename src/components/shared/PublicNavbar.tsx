@@ -2,7 +2,6 @@
 
 import {
   Menu,
-  ShoppingCart,
   User,
   ChevronDown,
   Facebook,
@@ -13,12 +12,15 @@ import {
   Phone,
   X,
 } from "lucide-react";
+
 import Link from "next/link";
-import { usePathname } from "next/navigation"; 
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Logo from "../../../public/assets/icon/Logo";
 import { UserInfo } from "@/types/user.interface";
 import UserDropdown from "./UserDropdown";
+import CartCount from "./CartCount";
+
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -61,6 +63,7 @@ const PublicNavbar = ({ accessToken, role, user }: NavbarProps) => {
   console.log(role)
   const pathname = usePathname();
 
+
   return (
     <header className="w-full">
 
@@ -95,16 +98,15 @@ const PublicNavbar = ({ accessToken, role, user }: NavbarProps) => {
             <ul className="hidden lg:flex items-center gap-6">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
-                
+
                 return (
                   <li key={link.label} className="relative group">
                     <Link
                       href={link.href}
-                      className={`text-sm flex items-center gap-1 transition-colors duration-200 ${
-                        isActive 
-                          ? "font-bold text-orange-600" 
+                      className={`text-sm flex items-center gap-1 transition-colors duration-200 ${isActive
+                          ? "font-bold text-orange-600"
                           : "font-normal text-black hover:text-orange-600"
-                      }`}
+                        }`}
                     >
                       {link.label}
                       {link.dropdown && <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />}
@@ -118,10 +120,7 @@ const PublicNavbar = ({ accessToken, role, user }: NavbarProps) => {
           <div className="flex items-center gap-3 lg:gap-6">
 
             <Link href="/cart" className="flex items-center gap-1.5 cursor-pointer group">
-              <div className="relative">
-                <ShoppingCart size={20} className="group-hover:text-orange-600 transition-colors" />
-                <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-yellow-400 rounded-full text-[10px] font-bold flex items-center justify-center">0</span>
-              </div>
+            <CartCount/>
               <h1 className="hidden sm:inline text-sm font-medium group-hover:text-orange-600 transition-colors">Cart</h1>
             </Link>
 
@@ -158,14 +157,13 @@ const PublicNavbar = ({ accessToken, role, user }: NavbarProps) => {
               const isActive = pathname === link.href;
               return (
                 <li key={link.label}>
-                  <Link 
-                    href={link.href} 
+                  <Link
+                    href={link.href}
                     onClick={() => setSidebarOpen(false)}
-                    className={`block py-3 px-4 rounded-lg text-base transition-all ${
-                      isActive 
-                        ? "font-bold text-orange-600 bg-orange-50" 
+                    className={`block py-3 px-4 rounded-lg text-base transition-all ${isActive
+                        ? "font-bold text-orange-600 bg-orange-50"
                         : "text-black hover:bg-neutral-50"
-                    }`}
+                      }`}
                   >
                     {link.label}
                   </Link>
@@ -176,7 +174,7 @@ const PublicNavbar = ({ accessToken, role, user }: NavbarProps) => {
         </div>
 
         {sidebarOpen && (
-          <div 
+          <div
             className="fixed inset-0 bg-black/40 backdrop-blur-sm z-90 transition-opacity duration-300"
             onClick={() => setSidebarOpen(false)}
           />

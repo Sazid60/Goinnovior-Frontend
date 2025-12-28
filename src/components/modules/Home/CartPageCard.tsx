@@ -1,43 +1,22 @@
-"use client";
 
-import { Heart, Eye, Share2, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { useCart } from "@/context/CartContext";
-import { toast } from "sonner";
+import { Trash, Heart, Eye, Share2 } from "lucide-react";
 
-interface ProductProps {
+interface CartPageCardProps {
     product: {
         id: string;
         name: string;
-        description: string;
+        description?: string;
         maxPrice: number;
         minPrice: number;
         quantity: number;
         image: string;
     };
+    onRemove: (id: string) => void;
 }
 
-const ProductCard = ({ product }: ProductProps) => {
-    const { addToCart, isInCart } = useCart();
-    const inCart = isInCart(product.id);
-
-    const handleAddToCart = () => {
-        if (inCart) {
-            toast("Already in cart!");
-            return;
-        }
-        addToCart({
-            id: product.id,
-            name: product.name,
-            minPrice: product.minPrice,
-            maxPrice: product.maxPrice,
-            quantity: product.quantity,
-            image: product.image,
-        });
-        toast.success("Added to cart!");
-    };
-
+const CartPageCard = ({ product, onRemove }: CartPageCardProps) => {
     return (
         <div className="group relative p-3 bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 w-full h-fit">
             <div className="relative h-64 group-hover:h-80 w-full bg-gray-100 rounded-lg overflow-hidden transition-[height] duration-500 ease-in-out">
@@ -78,13 +57,11 @@ const ProductCard = ({ product }: ProductProps) => {
                 </div>
                 <div className="flex items-center gap-3 w-full">
                     <Button
-                        variant="secondary"
-                        className="flex-1 bg-teal-500/10 hover:bg-teal-500/20 text-teal-600 border-none rounded h-10 gap-2 text-xs font-medium"
-                        onClick={handleAddToCart}
-                        disabled={inCart}
+                        variant="destructive"
+                        className="flex-1 h-10 gap-2 text-xs font-medium rounded"
+                        onClick={() => onRemove(product.id)}
                     >
-                        <ShoppingCart className="w-4 h-4" />
-                        {inCart ? "Added" : "Add To Cart"}
+                        <Trash className="w-4 h-4" /> Remove from Cart
                     </Button>
                     <Button
                         className="flex-1 bg-teal-500 hover:bg-teal-600 text-white rounded h-10 text-xs font-medium"
@@ -97,4 +74,4 @@ const ProductCard = ({ product }: ProductProps) => {
     );
 };
 
-export default ProductCard;
+export default CartPageCard;

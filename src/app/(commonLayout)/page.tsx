@@ -12,6 +12,7 @@ import { Suspense } from "react";
 export default async function Home() {
   const bannerData = await getBanner();
   const products = await getAllProducts();
+  const productsData = products?.data || [];
 
   return (
     <>
@@ -20,7 +21,7 @@ export default async function Home() {
           <HeroSection banner={bannerData} />
           <MarqueeBar />
           <FacilitiesSection />
-          <FeaturedProducts products={products} />
+          <FeaturedProducts products={productsData} />
         </Suspense>
 
       </main>

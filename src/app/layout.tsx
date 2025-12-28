@@ -8,6 +8,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Suspense } from "react";
 import LoginSuccessToast from "@/components/shared/LoginSuccessToast";
+import { CartProvider } from "@/context/CartContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,19 +42,21 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <Toaster position="bottom-right" richColors />
-          <Suspense fallback={null}>
-            <LoginSuccessToast />
-          </Suspense>
+        <CartProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Toaster position="bottom-right" richColors />
+            <Suspense fallback={null}>
+              <LoginSuccessToast />
+            </Suspense>
 
-        </ThemeProvider>
+          </ThemeProvider>
+        </CartProvider>
       </body>
     </html>
   );
