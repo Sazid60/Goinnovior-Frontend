@@ -73,9 +73,9 @@ export const HeroSection = () => {
                         <div className="col-span-1 lg:col-span-4 flex justify-start lg:justify-end">
                             <button
                                 onClick={handleToggle}
-                                className="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-40 xl:h-40 rounded-full border border-white/20 flex items-center justify-center transition-all hover:scale-105 active:scale-95"
+                                className="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32  rounded-full border border-white/20 flex items-center justify-center transition-all hover:scale-105 active:scale-95"
                             >
-                                <div className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24 bg-white rounded-full flex items-center justify-center shadow-xl">
+                                <div className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20  bg-white rounded-full flex items-center justify-center shadow-xl">
                                     {isPlaying ? (
                                         <Pause className="text-red-600 fill-red-600 w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
                                     ) : (
