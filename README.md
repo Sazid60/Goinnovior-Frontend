@@ -4,6 +4,8 @@ A robust, modular e-commerce frontend built with **Next.js 16.0.7**, **React 19.
 
 ---
 
+
+
 ### Live Link : [Gonnivior E-Commerce Frontend](https://gonnivior-frontend.vercel.app/)
 ### Backend Repo : [Gonnivior E-Commerce Backend](https://github.com/Sazid60/Goinnovior-Backend.git)
 
@@ -12,6 +14,14 @@ A robust, modular e-commerce frontend built with **Next.js 16.0.7**, **React 19.
 
 - ADMIN_EMAIL= admin@gmail.com
 - ADMIN_PASSWORD= Admin@12345
+
+**Special Notes :**
+1. Hit the `Your Profile` button on the navbar to access login page and can navigate from login page to register page. After successful login hover over your image in the navbar and see user dropdown with logout option.
+2. Once You log in you will not be able to access the auth routes (login, register) unless you log out.
+3. Add to cart functionality is dealt with local storage. So, the cart items will persist even after page refresh.
+4. The dynamic contents are `Banner Content` , `products` which can be managed from the admin panel.
+
+*visual representations are given at the end of the README*
 
 ## Features Overview
 
