@@ -22,7 +22,7 @@ export const adminProtectedRoutes: RouteConfig = {
 }
 
 export const clientProtectedRoutes: RouteConfig = {
-    patterns: [/^\/dashboard/], 
+    patterns: [], 
     exact: [], 
 }
 
@@ -53,7 +53,7 @@ export const getRouteOwner = (pathname: string): "ADMIN" | "USER" | "COMMON" | n
 
 export const getDefaultDashboardRoute = (role: UserRole): string => {
     if (role === "ADMIN") {
-        return "/admin/dashboard";
+        return "/admin/manage-products";
     }
     if (role === "USER") {
         return "/";

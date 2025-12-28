@@ -30,7 +30,7 @@ export const HeroSection = () => {
 
     return (
         <section className="relative w-full flex flex-col bg-white overflow-x-hidden">
-            <div className="relative w-full h-[75vh] min-h-[600px] xl:h-[90vh] flex items-center">
+            <div className="relative w-full h-[75vh] min-h-[600px] xl:h-[70vh] flex items-center">
                 <div className="absolute inset-0 z-0">
                     <video
                         ref={videoRef}
@@ -44,7 +44,7 @@ export const HeroSection = () => {
                     <div className="absolute inset-0 bg-black/50" />
                 </div>
 
-                <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-16 xl:px-[120px]">
+                <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-16 xl:px-4">
                     <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10">
                         <div className="col-span-1 lg:col-span-8 flex flex-col gap-4 md:gap-6">
                             <p className="text-white/80 text-base md:text-lg font-normal  uppercase tracking-wider">

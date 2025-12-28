@@ -26,8 +26,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "EVENTRA- Connect & Explore",
-  description: "an event management platform to connect with locals for events, meetups, and activities.",
+  title: "Gonnivior ",
+  description: "Task based on small crud e-commerce app using Next.js 13 and Tailwind CSS",
 };
 
 export default function RootLayout({

@@ -170,6 +170,7 @@ const PublicFooter = () => {
                   width={80}
                   height={40}
                   className="rounded bg-white object-contain h-12 w-24"
+                  style={{ height: '48px', width: '80px' }}
                 />
               </div>
             ))}

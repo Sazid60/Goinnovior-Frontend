@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/modules/Home/Hero";
 import MarqueeBar from "@/components/modules/Home/Marquee";
 
 export default async function Home() {
+  
 
   return (
     <>

@@ -4,12 +4,14 @@ import { Client } from "./client.interface";
 
 export interface UserInfo {
   id: string;
+  name: string;
   email: string;
-  role: UserRole;          
-  status: UserStatus;      
-  isVerified: boolean;
+  role: UserRole;
+  needPasswordChange: boolean;
+  profilePhoto: string;
+  status: UserStatus;
   admin?: IAdmin;
-  client?: Client;
+  client?: Client,
   createdAt: string;
   updatedAt: string;
 }
