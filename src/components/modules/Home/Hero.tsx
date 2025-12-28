@@ -60,10 +60,10 @@ export const HeroSection = ({ banner }: { banner: BannerType | null }) => {
                             <p className="text-white/80 text-base md:text-lg font-normal uppercase tracking-wider">
                                 Elevate Your Brand With
                             </p>
-                            <h1 className="text-white text-3xl md:text-5xl xl:text-6xl font-bold leading-tight md:leading-[1.1] xl:leading-[67.20px] whitespace-pre-line">
+                            <h1 className="max-w-[700px] text-white text-3xl md:text-5xl xl:text-6xl font-bold leading-tight md:leading-[1.1] xl:leading-[67.20px] whitespace-pre-line">
                                 {displayData.title}
                             </h1>
-                            <p className="max-w-[600px] text-white/60 text-sm md:text-base xl:text-lg font-normal leading-relaxed md:leading-7">
+                            <p className="max-w-[780px] text-white/60 text-sm md:text-base xl:text-lg font-normal leading-relaxed md:leading-7">
                                 {displayData.description}
                             </p>
 

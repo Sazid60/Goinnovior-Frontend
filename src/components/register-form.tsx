@@ -106,12 +106,6 @@ const RegisterForm = () => {
       <Button className="w-full h-11 md:h-12 bg-[#14b8a6] hover:bg-[#0d9488] text-white font-bold text-sm md:text-base rounded-xl transition-all shadow-lg shadow-teal-500/20 active:scale-95" type="submit" disabled={isPending}>
         {isPending ? "Signing Up..." : "Sign Up"}
       </Button>
-      <p className="text-center text-[11px] md:text-xs text-white/60">
-        Already have an account?{" "}
-        <a href="/login" className="text-white font-bold hover:underline">
-          Sign in
-        </a>
-      </p>
     </form>
   );
 };

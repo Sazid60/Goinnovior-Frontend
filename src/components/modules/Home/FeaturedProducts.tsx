@@ -9,7 +9,7 @@ import { ProductType } from "@/types/product.interface";
 const FeaturedProducts = ({ products }: { products: ProductType[] }) => {
   return (
     <section className="py-4 md:py-16 bg-white mb-20">
-      <div className="container mx-auto px-4 md:px-12 lg:px-[120px]">
+      <div className="container mx-auto px-4 md:px-12 lg:px-4">
         <div className="flex flex-col md:flex-row justify-center md:justify-between items-start mb-10 gap-3">
           <div>
             <h2 className="text-black text-3xl md:text-4xl font-bold font-['Urbanist']">
