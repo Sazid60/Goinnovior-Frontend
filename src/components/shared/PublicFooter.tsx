@@ -1,12 +1,18 @@
-
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../../public/assets/icon/Logo";
-import { Mail, MapPin, Copy, Check, Facebook, Twitter, Instagram } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Copy,
+  Check,
+  Facebook,
+  Twitter,
+  Instagram,
+} from "lucide-react";
 
 import { useState } from "react";
-
 
 const visa = "/assets/images/visa.png";
 const master = "/assets/images/master.png";
@@ -41,7 +47,6 @@ const paymentChannels = [
 ];
 
 const PublicFooter = () => {
-
   const [copied, setCopied] = useState(false);
   const email = "info@zaheen.com";
 
@@ -100,7 +105,7 @@ const PublicFooter = () => {
               <ul className="flex flex-col gap-1">
                 <li>
                   <Link
-                    href="/about"
+                    href="#"
                     className="text-black text-sm font-light font-['Roboto'] hover:text-orange-600 transition"
                   >
                     About Us
@@ -108,7 +113,7 @@ const PublicFooter = () => {
                 </li>
                 <li>
                   <Link
-                    href="/services"
+                    href="#"
                     className="text-black text-sm font-light font-['Roboto'] hover:text-orange-600 transition"
                   >
                     Our Services
@@ -116,7 +121,7 @@ const PublicFooter = () => {
                 </li>
                 <li>
                   <Link
-                    href="/products"
+                    href="#"
                     className="text-black text-sm font-light font-['Roboto'] hover:text-orange-600 transition"
                   >
                     Our Products
@@ -131,7 +136,7 @@ const PublicFooter = () => {
               <ul className="flex flex-col gap-1">
                 <li>
                   <Link
-                    href="/account"
+                    href="#"
                     className="text-black text-sm font-light font-['Roboto'] hover:text-orange-600 transition"
                   >
                     My Account
@@ -139,7 +144,7 @@ const PublicFooter = () => {
                 </li>
                 <li>
                   <Link
-                    href="/corporate"
+                    href="#"
                     className="text-black text-sm font-light font-['Roboto'] hover:text-orange-600 transition"
                   >
                     Corporate Enquiries
@@ -147,7 +152,7 @@ const PublicFooter = () => {
                 </li>
                 <li>
                   <Link
-                    href="/faqs"
+                    href="#"
                     className="text-black text-sm font-light font-['Roboto'] hover:text-orange-600 transition"
                   >
                     FAQs
@@ -165,13 +170,12 @@ const PublicFooter = () => {
             {paymentChannels.map((item, idx) => (
               <div key={idx} className="flex items-center justify-center ">
                 <Image
-                
                   src={item.src}
                   alt={item.alt}
                   width={80}
                   height={40}
                   className="rounded bg-white object-contain h-12 w-24"
-                  style={{ height: '48px', width: '80px' }}
+                  style={{ height: "48px", width: "80px" }}
                 />
               </div>
             ))}
@@ -186,7 +190,7 @@ const PublicFooter = () => {
           <div className="flex justify-center items-center gap-4">
             <Facebook size={16} />
             <Twitter size={16} />
-            <Instagram size={16}  />
+            <Instagram size={16} />
           </div>
           <div className="flex flex-col lg:flex-row items-center gap-6">
             <Link

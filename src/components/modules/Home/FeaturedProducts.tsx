@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import ProductCard from "./ProductCard";
 
 
@@ -16,9 +17,9 @@ const FeaturedProducts = ({ products }: { products: ProductType[] }) => {
               Our Apparels
             </h2>
           </div>
-          <button className="text-black text-sm font-medium underline underline-offset-4 hover:text-teal-600 transition-colors">
+          <Link href="/all-products" className="text-black text-sm font-medium underline underline-offset-4 hover:text-teal-600 transition-colors">
             See All Products
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-4 gap-8">

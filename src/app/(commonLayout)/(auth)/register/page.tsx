@@ -1,17 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import Logo from "../../../../../public/assets/icon/Logo";
 import Link from "next/link";
 import RegisterForm from "@/components/register-form";
 
 const RegisterPage = () => {
+    const router = useRouter();
     const googleAuthUrl = `${process.env.NEXT_PUBLIC_BASE_API_URL}/auth/google`;
     const [isGoogleLoading, setIsGoogleLoading] = useState(false);
 
     const handleGoogleLogin = () => {
         setIsGoogleLoading(true);
-        window.location.href = googleAuthUrl;
+        router.push(googleAuthUrl);
     };
     return (
         <div className="w-full flex items-center justify-center p-4 md:p-8">
