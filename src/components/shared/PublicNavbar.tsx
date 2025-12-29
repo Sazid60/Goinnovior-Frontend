@@ -42,7 +42,7 @@ const navLinks = [
       { label: "Product 1", href: "#" },
     ],
   },
-  { label: "Blogs", href: "/blogs" },
+  { label: "Blogs", href: "#" },
 ];
 
 const addressInfo = [
